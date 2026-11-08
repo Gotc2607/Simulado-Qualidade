@@ -108,3 +108,4 @@ Simulado-Qualidade/
 │       └── questions.js       # Banco com as 30 questões comentadas e metadados
 └── README.md                  # Documentação completa do projeto
 ```
+

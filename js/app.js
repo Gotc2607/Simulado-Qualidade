@@ -1058,3 +1058,4 @@ function escapeHtml(str) {
 
 // Boot application when DOM is ready
 document.addEventListener('DOMContentLoaded', initApp);
+

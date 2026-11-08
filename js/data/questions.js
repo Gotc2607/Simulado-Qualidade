@@ -550,3 +550,4 @@ export const topicsSummary = {
     description: "Practical Software Measurement (John McGarry / DoD): Princípios fundamentais, 4 Atividades do Processo, Categorias Comuns de Medição, Especificação de Indicadores e Limiares de Decisão, e alinhamento com ISO/IEC 15939."
   }
 };
+

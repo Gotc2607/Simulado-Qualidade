@@ -1,5 +1,7 @@
 # Simulado Web de Qualidade de Software
 
+> 🌐 **Acesse online:** [https://gotc2607.github.io/Simulado-Qualidade/](https://gotc2607.github.io/Simulado-Qualidade/)
+
 Aplicação web interativa para preparação, avaliação e estudo sobre **Medição e Análise de Software**, **GQM (Goal Question Metric)** e **PSM (Practical Software Measurement)**.
 
 ## 📋 Conteúdo Abordado (30 Questões Comentadas)

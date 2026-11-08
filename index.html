@@ -32,9 +32,9 @@
           <span>Modo Treino</span>
         </button>
 
-        <button class="nav-btn" id="nav-btn-theory" title="Guia Resumido da Teoria">
+        <button class="nav-btn" id="nav-btn-theory" title="Material de Estudo Teórico Completo">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0-5H20"></path></svg>
-          <span>Resumo Teórico</span>
+          <span>Material de Estudo</span>
         </button>
 
         <button class="nav-btn" id="nav-btn-history" title="Histórico de Tentativas">
@@ -79,6 +79,14 @@
             <span style="color: var(--success);">📈</span>
             <span>Diagnóstico por Tópico</span>
           </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--border-subtle); display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;">Quer revisar a teoria antes de iniciar?</span>
+          <button class="btn-secondary" id="btn-hero-study" style="padding: 0.45rem 1rem; font-size: 0.85rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0-5H20"></path></svg>
+            Acessar Material de Estudo
+          </button>
         </div>
       </div>
 
@@ -386,6 +394,21 @@
         </div>
       </div>
 
+      <!-- Relatório Detalhado de Questões Erradas e Em Branco -->
+      <div class="results-mistakes-section" id="results-mistakes-section">
+        <div class="mistakes-section-header">
+          <h3>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--danger);"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            Relatório de Questões Erradas & Oportunidades de Aprendizado
+          </h3>
+          <p id="mistakes-summary-text">Confira a análise técnica de cada questão em que houve erro ou omissão, a alternativa correta e a justificativa teórica.</p>
+        </div>
+
+        <div class="mistakes-list" id="results-mistakes-container">
+          <!-- Rendered dynamically by js/app.js -->
+        </div>
+      </div>
+
       <!-- Action Buttons -->
       <div class="results-actions-grid">
         <button class="btn-primary" id="btn-goto-review">
@@ -441,178 +464,480 @@
     </section>
 
     <!-- ====================================================================
-         VIEW 5: QUICK THEORY GUIDE ("Guia Rápido de Bolso")
+         VIEW 5: DEEP THEORY & STUDY ACADEMY
          ==================================================================== -->
     <section class="view-section" id="view-theory">
-      <div class="theory-container">
-        <!-- Theory 1: Introdução à Medição -->
-        <article class="theory-section">
-          <h3>
-            <span style="color: var(--accent-intro);">📘</span>
-            1. Introdução à Medição e Análise de Software
-          </h3>
-          <div class="theory-content">
-            <p>A medição em software é a atribuição numérica ou simbólica de valores a atributos de entidades do mundo real do desenvolvimento (processos, produtos ou recursos) para caracterizá-los objetivamente (Fenton & Pfleeger).</p>
-
-            <div class="theory-box">
-              <h4>Conceitos Fundamentais (IEEE & ISO/IEC 15939):</h4>
-              <p><strong>• Medida (Measure):</strong> Número atribuído diretamente a um atributo mensurável (ex: 1.200 linhas de código, 8 horas de teste).</p>
-              <p><strong>• Métrica (Metric):</strong> Medida quantitativa do grau em que um sistema/processo possui um atributo, frequentemente combinando duas medidas (ex: Densidade de Defeitos = Defeitos / KLOC).</p>
-              <p><strong>• Indicador (Indicator):</strong> Métrica ou combinação de métricas associada a critérios de decisão e limiares (thresholds), gerando subsídios para a ação e tomada de decisão gerencial.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Escalas de Medição (Teoria da Medição):</h4>
-              <p><strong>• Nominal:</strong> Classificação em categorias sem ordem (ex: tipo de erro: sintaxe, lógica, concorrência). Operações válidas: igualdade, moda.</p>
-              <p><strong>• Ordinal:</strong> Categorias com ordenação inerente (ex: severidade: baixa, média, alta, crítica). Operações: ordenação, mediana.</p>
-              <p><strong>• Intervalar:</strong> Escala numérica com intervalos regulares, mas sem zero absoluto (ex: datas no calendário, temperatura Celsius). Operações: média, desvio-padrão.</p>
-              <p><strong>• Razão (Ratio):</strong> Escala com zero absoluto não arbitrário (ex: tempo em horas, LOC, custo em reais). Permite todas as operações matemáticas e estatísticas (razões e proporções).</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Modelo de Informação da Medição (ISO/IEC 15939):</h4>
-              <p><strong>Necessidade de Informação → Objeto & Atributo → Medida de Base → Medida Derivada → Indicador (com critérios de decisão) → Produto de Informação.</strong></p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Lei de Goodhart & Armadilhas:</h4>
-              <p><em>"Quando uma medida se torna uma meta de desempenho ou punição, ela deixa de ser uma boa medida."</em> Métricas devem avaliar processos e produtos, nunca servir como ferramenta coercitiva ou de recompensa individual isolada sem métricas de contrapeso.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Theory 2: GQM -->
-        <article class="theory-section">
-          <h3>
-            <span style="color: var(--accent-gqm);">🎯</span>
-            2. GQM - Goal Question Metric (Victor Basili)
-          </h3>
-          <div class="theory-content">
-            <p>Criado na NASA/SEL por Victor Basili, o GQM é uma abordagem orientada a objetivos (Goal-Driven) que estabelece que a medição deve sempre partir de um objetivo claro para ser significativa.</p>
-
-            <div class="theory-box">
-              <h4>Os 3 Níveis da Hierarquia GQM:</h4>
-              <p><strong>1. Nível Conceitual (GOAL / META):</strong> O objetivo que se pretende atingir ou analisar com a medição.</p>
-              <p><strong>2. Nível Operacional (QUESTION / QUESTÃO):</strong> Conjunto de perguntas que caracterizam o objeto e definem se a meta está sendo cumprida.</p>
-              <p><strong>3. Nível Quantitativo (METRIC / MÉTRICA):</strong> Conjunto de dados e medidas quantitativas (objetivas ou subjetivas) que respondem numericamente a cada questão.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>A Via de Mão Dupla do GQM:</h4>
-              <p><strong>• Top-Down (Especificação/Planejamento):</strong> Meta → Questões → Métricas.</p>
-              <p><strong>• Bottom-Up (Interpretação/Análise):</strong> Métricas coletadas respondem às Questões, que por sua vez permitem avaliar e interpretar a Meta.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>O Template Formal de Metas GQM:</h4>
-              <p>O GQM define metas através de 5 dimensões mandatórias:</p>
-              <p>• <strong>Objeto:</strong> O processo, produto ou recurso a ser analisado (ex: o processo de code review).</p>
-              <p>• <strong>Propósito:</strong> O intuito (caracterizar, avaliar, prever, melhorar, controlar).</p>
-              <p>• <strong>Foco de Qualidade:</strong> O atributo de qualidade visado (ex: eficácia na remoção de defeitos).</p>
-              <p>• <strong>Ponto de Vista:</strong> Quem é o stakeholder interessado (desenvolvedor, gerente, cliente, QA).</p>
-              <p>• <strong>Contexto:</strong> O ambiente de aplicação (ex: projetos da equipe mobile na empresa X).</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Folhas de Abstração (Abstraction Sheets):</h4>
-              <p>Instrumento de workshops do GQM dividido em 4 quadrantes: Foco de Qualidade, Fatores de Variação, Hipóteses de Linha de Base (Baseline), e Hipóteses de Impacto.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>GQM+Strategies & QIP:</h4>
-              <p>• <strong>GQM+Strategies:</strong> Alinha objetivos de negócio de alto nível da diretoria executiva às metas operacionais de engenharia de software.</p>
-              <p>• <strong>QIP (Quality Improvement Paradigm):</strong> Ciclo de 6 etapas de melhoria contínua onde o GQM é a ferramenta nuclear nos passos de Definição de Metas (Passo 2) e Análise de Dados (Passo 5).</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Theory 3: PSM -->
-        <article class="theory-section">
-          <h3>
-            <span style="color: var(--accent-psm);">⚙️</span>
-            3. PSM - Practical Software Measurement (John McGarry / DoD)
-          </h3>
-          <div class="theory-content">
-            <p>O PSM foi patrocinado pelo Departamento de Defesa dos EUA (DoD) e Exército Americano para fornecer a gerentes de projeto informações objetivas e baseadas em fatos para tomada de decisão e controle de riscos em projetos de sistemas complexos.</p>
-
-            <div class="theory-box">
-              <h4>As 4 Atividades do Ciclo do PSM:</h4>
-              <p><strong>1. Estabelecer e Sustentar o Compromisso (Establish & Sustain Commitment):</strong> Obter patrocínio gerencial, recursos, orçamento e treinamento.</p>
-              <p><strong>2. Planejar a Medição (Plan Measurement):</strong> Identificar questões e riscos de medição do projeto, selecionar medidas, especificar fichas técnicas e procedimentos de coleta.</p>
-              <p><strong>3. Executar a Medição (Perform Measurement):</strong> Coletar dados, analisar indicadores, comparar contra limiares e gerar produtos de informação para os tomadores de decisão.</p>
-              <p><strong>4. Avaliar a Medição (Evaluate Measurement):</strong> Avaliar a eficácia do próprio processo de medição (meta-medição/PDCA) e atualizar o repositório de experiências.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Categorias Comuns de Medição do PSM:</h4>
-              <p>O PSM disponibiliza um catálogo consolidado de categorias e indicadores comprovados:</p>
-              <p>• <strong>Cronograma e Progresso (Schedule & Progress):</strong> Marcos, Sprints, datas de entrega, burn-down.</p>
-              <p>• <strong>Esforço e Custo (Effort & Cost):</strong> Horas gastas, custo real vs. orçado (EVM/CPI).</p>
-              <p>• <strong>Tamanho e Estabilidade (Size & Stability):</strong> LOC, Pontos de Função, Story Points, taxa de alteração de escopo.</p>
-              <p>• <strong>Qualidade do Produto (Product Quality):</strong> Densidade de defeitos, falhas críticas, usabilidade.</p>
-              <p>• <strong>Desempenho do Processo (Process Performance):</strong> DRE, lead time, tempo de ciclo.</p>
-              <p>• <strong>Eficácia dos Recursos (Resource Effectiveness):</strong> Disponibilidade do ambiente de testes, capacidade das ferramentas.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>O Conceito de Indicador e Critérios de Decisão no PSM:</h4>
-              <p>Para o PSM, um indicador requer obrigatoriamente três partes: a <strong>medida real</strong>, uma <strong>linha de base/meta de planejamento</strong> e <strong>Critérios de Decisão (limiares/thresholds)</strong> que instruam qual decisão ou ação corretiva deve ser disparada quando ocorrer um desvio.</p>
-            </div>
-
-            <div class="theory-box">
-              <h4>Convergência com ISO/IEC 15939:</h4>
-              <p>A norma internacional ISO/IEC 15939 adotou diretamente o modelo de processo (Plan, Perform, Evaluate, Commit) e o Modelo de Informação estabelecidos pelo PSM.</p>
-            </div>
-
-            <!-- Comparison Table -->
-            <h4 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-primary);">Quadro Comparativo: GQM vs. PSM</h4>
-            <div style="overflow-x: auto;">
-              <table class="theory-table">
-                <thead>
-                  <tr>
-                    <th>Característica</th>
-                    <th>GQM (Goal Question Metric)</th>
-                    <th>PSM (Practical Software Measurement)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Origem</strong></td>
-                    <td>NASA / Software Engineering Lab (Victor Basili)</td>
-                    <td>DoD / US Army (John McGarry)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Foco Primário</strong></td>
-                    <td>Derivação lógica de métricas sob medida a partir de metas conceituais e questões</td>
-                    <td>Processo prático de medição e catálogo estruturado de indicadores para suporte à decisão gerencial</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Abordagem de Seleção</strong></td>
-                    <td>Heurística customizada (Template de Metas + Questões)</td>
-                    <td>Orientado a problemas do projeto (Issue-driven) com catálogo de Categorias Comuns pré-existente</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Estrutura Nuclear</strong></td>
-                    <td>Meta → Questão → Métrica (Top-Down / Bottom-Up)</td>
-                    <td>Plan → Perform → Evaluate → Commit</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Normatização</strong></td>
-                    <td>Fundamenta o GQM+Strategies e o QIP</td>
-                    <td>Originou diretamente a norma ISO/IEC 15939 / IEEE 15939</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Relação</strong></td>
-                    <td colspan="2" style="text-align: center; font-weight: 600; background: var(--bg-surface);">
-                      Complementares: O GQM define "o que e por que medir" de forma personalizada, enquanto o PSM estrutura "como gerenciar o processo de medição e apoiar decisões em projetos".
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </article>
+      <div style="margin-bottom: 1.5rem;">
+        <span class="hero-tag" style="background: var(--primary-light); color: var(--primary);">Material Teórico & Bibliográfico</span>
+        <h2 style="font-size: 1.75rem; font-weight: 800; margin-top: 0.35rem;">Academia de Estudo: Qualidade e Medição de Software</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Fundamentação conceitual profunda baseada nas normas ISO/IEC 15939, CMMI-DEV, literatura de Fenton, Basili (GQM) e McGarry (PSM).</p>
       </div>
+
+      <!-- Navigation Tabs -->
+      <div class="study-nav-tabs" id="study-nav-tabs">
+        <button class="study-tab-btn active" data-tab="pane-intro">
+          <span>📘 1. Introdução à Medição</span>
+        </button>
+        <button class="study-tab-btn" data-tab="pane-gqm">
+          <span>🎯 2. Metodologia GQM (Basili)</span>
+        </button>
+        <button class="study-tab-btn" data-tab="pane-psm">
+          <span>⚙️ 3. Framework PSM (McGarry)</span>
+        </button>
+        <button class="study-tab-btn" data-tab="pane-comp">
+          <span>⚖️ 4. Quadro Comparativo & Síntese</span>
+        </button>
+      </div>
+
+      <!-- Tab Content Panes -->
+      <div id="study-panes-container">
+
+        <!-- ================================================================
+             PANE 1: INTRODUÇÃO À MEDIÇÃO E ANÁLISE
+             ================================================================ -->
+        <div class="study-pane active" id="pane-intro">
+          <article class="theory-section">
+            <h3><span style="color: var(--accent-intro);">📘</span> 1. Fundamentos da Teoria da Medição em Software</h3>
+            <div class="theory-content">
+              <p>
+                Segundo <strong>Fenton & Pfleeger</strong>, a medição é <em>"o processo pelo qual números ou símbolos são atribuídos a atributos de entidades do mundo real de tal forma que os descrevam de acordo com regras claramente definidas"</em>.
+              </p>
+              <p>
+                No contexto de software, as entidades avaliadas pertencem a três classes: <strong>Produtos</strong> (artefatos gerados, como código-fonte, especificações e casos de teste), <strong>Processos</strong> (atividades do ciclo de vida, como inspeções e sprints) e <strong>Recursos</strong> (pessoas, hardware, ferramentas de automação).
+              </p>
+
+              <!-- Diferença Medida vs Métrica vs Indicador -->
+              <div class="theory-box">
+                <h4>Tríade Conceitual: Medida vs. Métrica vs. Indicador (ISO/IEC 15939 & IEEE)</h4>
+                <p><strong>1. Medida (Measure):</strong> Valor numérico atribuído a um atributo mensurável através de medição direta (ex: 2.500 linhas de código, 14 horas de esforço).</p>
+                <p><strong>2. Métrica (Metric):</strong> Medida quantitativa do grau em que um sistema, componente ou processo possui determinado atributo, frequentemente relacionando duas ou mais medidas (ex: Densidade de Defeitos = Defeitos / KLOC; Produtividade = Horas / Pontos de Função).</p>
+                <p><strong>3. Indicador (Indicator):</strong> Uma métrica ou agregação de métricas associada a <em>critérios de decisão e limiares (thresholds)</em>, convertendo dados em subsídios concretos para ação gerencial (ex: "Se a Densidade de Defeitos exceder 5 defeitos/KLOC, o release deve ser bloqueado para retrabalho").</p>
+              </div>
+
+              <!-- Escalas de Medição -->
+              <div class="theory-box">
+                <h4>As 4 Escalas de Medição (Teoria Representacional de Fenton & Stevens)</h4>
+                <p>A escolha da escala de medição impõe limites rígidos sobre quais análises matemáticas e estatísticas são cientificamente válidas:</p>
+                <div style="overflow-x: auto;">
+                  <table class="theory-table">
+                    <thead>
+                      <tr>
+                        <th>Escala</th>
+                        <th>Definição e Características</th>
+                        <th>Operações e Estatísticas Válidas</th>
+                        <th>Exemplos em Software</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Nominal</strong></td>
+                        <td>Classificação em categorias discretas mutuamente exclusivas, sem qualquer relação de ordem ou hierarquia.</td>
+                        <td>Igualdade (=, ≠), Contagem de frequência, Moda. <em>Média e mediana não têm sentido.</em></td>
+                        <td>Tipo de defeito (Lógica, Interface, Segurança); Linguagem de programação (Java, Python, C++).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ordinal</strong></td>
+                        <td>Categorias com ordenação hierárquica clara (maior que / menor que), mas os intervalos entre os níveis não são conhecidos nem constantes.</td>
+                        <td>Ordenação (&gt;, &lt;), Mediana, Percentis, Correlação de postos (Spearman). <em>Média aritmética é inválida.</em></td>
+                        <td>Severidade do defeito (Baixa &lt; Média &lt; Alta &lt; Crítica); Escala Likert de satisfação (1 a 5).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Intervalar</strong></td>
+                        <td>Existe ordenação e intervalos quantitativos constantes entre os pontos, mas <em>o ponto zero é arbitrário</em> (ausência de zero absoluto).</td>
+                        <td>Diferença, Adição, Subtração, Média aritmética, Desvio-padrão. <em>Razões e proporções ("o dobro") são inválidas.</em></td>
+                        <td>Datas do calendário gregoriano (Sprint start/end); Temperatura em graus Celsius.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Razão (Ratio)</strong></td>
+                        <td>Possui todas as características da escala intervalar, além de um <em>zero absoluto e natural</em> (que representa ausência total do atributo).</td>
+                        <td>Todas as operações matemáticas (Multiplicação, Divisão, Razões, Proporções, Média geométrica).</td>
+                        <td>Tamanho em linhas de código (0 LOC = ausência de código); Duração em horas; Custo em reais; Número de falhas.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Medidas de Base vs Derivadas -->
+              <div class="theory-box">
+                <h4>Medidas de Base vs. Medidas Derivadas (ISO/IEC 15939)</h4>
+                <p><strong>• Medida de Base (Base Measure):</strong> Medida definida em função de um único atributo físico ou lógico e pelo método para quantificá-lo de forma independente (ex: contagem de dias trabalhados, contagem de bugs reportados).</p>
+                <p><strong>• Medida Derivada (Derived Measure):</strong> Medida calculada matematicamente a partir de duas ou mais medidas de base ou outras medidas derivadas através de uma fórmula (ex: Taxa de Falhas = $\frac{\text{Falhas}}{\text{Horas de Operação}}$).</p>
+              </div>
+
+              <!-- Modelo de Informação da Medição da ISO 15939 -->
+              <div class="theory-box">
+                <h4>O Modelo de Informação da Medição da ISO/IEC 15939</h4>
+                <p>Estrutura a transformação de necessidades abstratas em produtos de informação para tomada de decisão:</p>
+                <div class="theory-flow-steps">
+                  <div class="flow-step-item">1. Necessidade de Informação</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">2. Entidade & Atributo</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">3. Medida de Base</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">4. Medida Derivada</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">5. Indicador + Critérios de Decisão</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">6. Produto de Informação</div>
+                </div>
+              </div>
+
+              <!-- CMMI-DEV Medição e Análise -->
+              <div class="theory-box">
+                <h4>Área de Processo Medição e Análise (MA) do CMMI-DEV</h4>
+                <p>O CMMI organiza a área de processo MA em duas Metas Específicas interdependentes:</p>
+                <p><strong>SG 1 – Alinhar Atividades de Medição e Análise:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
+                  <li><em>SP 1.1 Estabelecer Objetivos de Medição:</em> Derivados dos objetivos do negócio e do projeto.</li>
+                  <li><em>SP 1.2 Especificar Medidas:</em> Definir medidas operacionais para endereçar os objetivos.</li>
+                  <li><em>SP 1.3 Especificar Procedimentos de Coleta e Armazenamento:</em> Como, quando e onde guardar os dados.</li>
+                  <li><em>SP 1.4 Especificar Procedimentos de Análise:</em> Como os dados serão transformados em relatórios e decisões.</li>
+                </ul>
+                <p><strong>SG 2 – Fornecer Resultados de Medição:</strong></p>
+                <ul style="margin-left: 1.5rem;">
+                  <li><em>SP 2.1 Obter Dados de Medição:</em> Coleta e checagem de integridade dos dados brutos.</li>
+                  <li><em>SP 2.2 Analisar Dados de Medição:</em> Interpretação contra limiares e identificação de anomalias.</li>
+                  <li><em>SP 2.3 Armazenar Dados e Resultados:</em> Preservação no repositório corporativo para baselines futuros.</li>
+                  <li><em>SP 2.4 Comunicar Resultados:</em> Divulgar produtos de informação aos stakeholders pertinentes.</li>
+                </ul>
+              </div>
+
+              <!-- DRE -->
+              <div class="theory-box">
+                <h4>Eficácia de Remoção de Defeitos (DRE - Defect Removal Efficiency)</h4>
+                <div class="theory-formula-card">
+                  <span class="formula-display">DRE = E / (E + D)</span>
+                  <p><strong>Onde:</strong></p>
+                  <p>• <strong>E (Errors):</strong> Número de erros/defeitos interceptados e removidos <em>antes</em> da entrega ao cliente (nas fases de desenvolvimento, code review e testes internos).</p>
+                  <p>• <strong>D (Defects):</strong> Número de defeitos/falhas identificados <em>após</em> o lançamento em produção pelos usuários finais.</p>
+                  <p style="margin-top: 0.5rem;"><strong>Interpretação:</strong> Um DRE de 90% indica que as barreiras de qualidade internas conseguiram filtrar 9 de cada 10 problemas antes que afetassem a operação do cliente.</p>
+                </div>
+              </div>
+
+              <!-- Armadilhas e Goodhart -->
+              <div class="theory-box">
+                <h4>Disfunções e Armadilhas: A Lei de Goodhart & Campbell</h4>
+                <p>
+                  <strong>Lei de Goodhart:</strong> <em>"Quando uma medida se torna uma meta, ela deixa de ser uma boa medida."</em> Se desenvolvedores forem recompensados por Linhas de Código (LOC), o código se tornará desnecessariamente inchado. Se forem avaliados por quantidade de bugs fechados, abrirão bugs triviais para inflar a métrica.
+                </p>
+                <p>
+                  <strong>Diretrizes anti-disfunção:</strong> 1) Nunca usar métricas para punição individual; 2) Sempre utilizar <em>métricas de contrapeso</em> (ex: produtividade sempre emparelhada com densidade de defeitos e satisfação do usuário); 3) Manter transparência e automação.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ================================================================
+             PANE 2: GQM - GOAL QUESTION METRIC
+             ================================================================ -->
+        <div class="study-pane" id="pane-gqm">
+          <article class="theory-section">
+            <h3><span style="color: var(--accent-gqm);">🎯</span> 2. A Abordagem GQM (Goal Question Metric)</h3>
+            <div class="theory-content">
+              <p>
+                Desenvolvida por <strong>Victor Basili e David Weiss (1984)</strong> no <em>Software Engineering Laboratory</em> da <strong>NASA Goddard Space Flight Center</strong>, a metodologia GQM revolucionou a qualidade de software ao introduzir o princípio da <strong>medição orientada a objetivos (Goal-Driven Measurement)</strong>.
+              </p>
+
+              <!-- Os 3 Níveis -->
+              <div class="theory-box">
+                <h4>Os Três Níveis da Estrutura Hierárquica do GQM</h4>
+                <p><strong>1. Nível Conceitual (GOAL / META):</strong> Formaliza o objetivo para um objeto de estudo, especificando o foco de qualidade, ponto de vista e contexto organizacional.</p>
+                <p><strong>2. Nível Operacional (QUESTION / QUESTÃO):</strong> Conjunto de perguntas que desmembram a meta conceitual em aspectos mensuráveis, caracterizando o estado atual e os fatores de influência.</p>
+                <p><strong>3. Nível Quantitativo (METRIC / MÉTRICA):</strong> Conjunto de métricas e medidas objetivas ou subjetivas que fornecem dados concretos para responder empiricamente a cada questão.</p>
+              </div>
+
+              <!-- A Via de Mão Dupla -->
+              <div class="theory-box">
+                <h4>A Dinâmica de Mão Dupla: Top-Down vs. Bottom-Up</h4>
+                <p><strong>• Fluxo Top-Down (Especificação e Planejamento):</strong> Inicia-se no nível mais alto (Meta), deduzem-se as questões operacionais e, ao final, determinam-se as métricas a serem coletadas. Evita coletar dados inúteis.</p>
+                <p><strong>• Fluxo Bottom-Up (Análise e Interpretação):</strong> Os dados das métricas coletadas são processados para responder às questões operacionais; as respostas combinadas às questões revelam se a meta foi alcançada e quais ações de melhoria devem ser tomadas.</p>
+              </div>
+
+              <!-- Template de Metas GQM -->
+              <div class="theory-box">
+                <h4>O Template Formal de Metas GQM (5 Elementos de Basili)</h4>
+                <p>Uma meta GQM deve preencher rigorosamente as cinco dimensões canônicas:</p>
+                <div style="overflow-x: auto;">
+                  <table class="theory-table">
+                    <thead>
+                      <tr>
+                        <th>Dimensão</th>
+                        <th>Definição</th>
+                        <th>Exemplo Prático</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>1. Objeto</strong></td>
+                        <td>A entidade física ou abstrata sob estudo (um processo, produto ou recurso).</td>
+                        <td>O processo de revisão por pares (code review).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>2. Propósito</strong></td>
+                        <td>A intenção da medição: caracterizar, avaliar, prever, controlar ou melhorar.</td>
+                        <td>Avaliar (e posteriormente melhorar).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>3. Foco de Qualidade</strong></td>
+                        <td>O atributo de qualidade ou propriedade específica que interessa.</td>
+                        <td>A eficácia na detecção de vulnerabilidades de segurança.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>4. Ponto de Vista</strong></td>
+                        <td>A perspectiva do stakeholder interessado (desenvolvedor, gerente, cliente, QA).</td>
+                        <td>Do ponto de vista da equipe de Segurança da Informação.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>5. Contexto</strong></td>
+                        <td>O ambiente, projeto, tecnologias e restrições onde a medição ocorre.</td>
+                        <td>No contexto dos microsserviços de pagamento da Empresa X.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="theory-formula-card" style="margin-top: 1rem;">
+                  <span style="font-weight: 700; color: var(--accent-gqm);">Sentença Canônica Montada:</span>
+                  <p style="font-style: italic; margin-top: 0.25rem;">
+                    "Analisar <strong>o processo de revisão por pares</strong> com o propósito de <strong>avaliar</strong> o <strong>foco de eficácia na detecção de vulnerabilidades</strong> sob o ponto de vista da <strong>equipe de Segurança da Informação</strong> no contexto dos <strong>microsserviços de pagamento da Empresa X</strong>."
+                  </p>
+                </div>
+              </div>
+
+              <!-- Folhas de Abstração -->
+              <div class="theory-box">
+                <h4>Folhas de Abstração (GQM Abstraction Sheets)</h4>
+                <p>Instrumento colaborativo utilizado em workshops com equipes técnicas para estruturar o raciocínio em 4 quadrantes:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem;">
+                  <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <strong style="color: var(--accent-gqm);">Q1: Foco de Qualidade</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Quais fatores definem qualidade para este objeto? (ex: densidade de falhas, tempo de resposta).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <strong style="color: var(--primary);">Q2: Fatores de Variação</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Quais variáveis contextuais afetam o foco? (ex: senioridade dos devs, complexidade ciclomática).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <strong style="color: var(--warning);">Q3: Hipóteses de Linha de Base</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Qual é o comportamento esperado atual? (ex: "esperamos 2 bugs por PR").</p>
+                  </div>
+                  <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <strong style="color: var(--accent-psm);">Q4: Hipóteses de Impacto</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Como os fatores afetam a qualidade? (ex: "PRs com mais de 400 linhas reduzem a detecção em 40%").</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GQM+Strategies & QIP -->
+              <div class="theory-box">
+                <h4>GQM+Strategies, QIP e Experience Factory</h4>
+                <p><strong>• GQM+Strategies (Basili et al., 2010):</strong> Estende o GQM conectando objetivos corporativos de negócio (ex: "Reduzir churn de clientes em 20%") às estratégias e metas operacionais de engenharia de software através de um Grid de Alinhamento Multinível.</p>
+                <p><strong>• QIP (Quality Improvement Paradigm):</strong> Ciclo empírico de melhoria em 6 passos (1. Caracterizar, 2. Estabelecer Metas via GQM, 3. Escolher Processo, 4. Executar, 5. Analisar Dados via GQM, 6. Empacotar Experiência).</p>
+                <p><strong>• Fábrica de Experiência (Experience Factory):</strong> Unidade organizacional dedicada a armazenar, catalogar e empacotar dados históricos de projetos para reaproveitamento institucional.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ================================================================
+             PANE 3: PSM - PRACTICAL SOFTWARE MEASUREMENT
+             ================================================================ -->
+        <div class="study-pane" id="pane-psm">
+          <article class="theory-section">
+            <h3><span style="color: var(--accent-psm);">⚙️</span> 3. O Framework PSM (Practical Software Measurement)</h3>
+            <div class="theory-content">
+              <p>
+                Liderado por <strong>John McGarry</strong> sob chancela do <strong>Departamento de Defesa dos EUA (DoD) e Exército Americano</strong>, o PSM foi concebido para fornecer a gerentes de projeto <em>informações objetivas e quantitativas para tomada de decisão e gestão proativa de riscos</em> em sistemas complexos.
+              </p>
+
+              <!-- Princípios do PSM -->
+              <div class="theory-box">
+                <h4>Princípios Fundamentais do PSM</h4>
+                <ul style="margin-left: 1.5rem; line-height: 1.7;">
+                  <li><strong>Orientado a Questões e Objetivos (Issue-Driven):</strong> Mede-se para resolver incertezas e responder a riscos do projeto.</li>
+                  <li><strong>Foco em Tomada de Decisão:</strong> Toda medida deve subsidiar uma escolha concreta de gerenciamento de escopo, prazo ou custo.</li>
+                  <li><strong>Integrado ao Ciclo de Vida:</strong> A medição não é um evento isolado, mas uma disciplina contínua ao longo de todas as fases.</li>
+                  <li><strong>Adaptável (Tailored):</strong> Cada projeto adapta o catálogo de categorias de acordo com suas características específicas.</li>
+                </ul>
+              </div>
+
+              <!-- As 4 Atividades do Processo do PSM -->
+              <div class="theory-box">
+                <h4>As 4 Atividades do Processo de Medição do PSM</h4>
+                <p>O processo do PSM é cíclico e fundamenta diretamente o padrão ISO/IEC 15939:</p>
+                <div class="theory-flow-steps">
+                  <div class="flow-step-item">1. Estabelecer & Sustentar o Compromisso</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">2. Planejar a Medição</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">3. Executar a Medição</div>
+                  <span class="flow-step-arrow">➔</span>
+                  <div class="flow-step-item">4. Avaliar a Medição</div>
+                </div>
+                <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+                  <p><strong>1. Establish and Sustain Commitment:</strong> Obter patrocínio formal da liderança, alocar orçamento, ferramentas e treinamento para o time.</p>
+                  <p><strong>2. Plan Measurement:</strong> Identificar as questões de medição (issues), selecionar medidas das categorias comuns, definir fichas técnicas e planejar a coleta.</p>
+                  <p><strong>3. Perform Measurement:</strong> Coletar dados brutos, calcular medidas derivadas, aplicar critérios de decisão e produzir relatórios para os tomadores de decisão.</p>
+                  <p><strong>4. Evaluate Measurement:</strong> Aplicar melhoria contínua (PDCA) sobre o próprio processo de medição (os dados são úteis? os custos de medição compensam? as ferramentas são eficientes?).</p>
+                </div>
+              </div>
+
+              <!-- Categorias Comuns de Medição -->
+              <div class="theory-box">
+                <h4>As 6 Categorias Comuns de Medição do PSM (Common Measurement Categories)</h4>
+                <div style="overflow-x: auto;">
+                  <table class="theory-table">
+                    <thead>
+                      <tr>
+                        <th>Categoria Comum</th>
+                        <th>O que monitora (Riscos e Questões)</th>
+                        <th>Exemplos Típicos de Indicadores</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>1. Cronograma e Progresso</strong></td>
+                        <td>Aderência aos prazos, conclusão de tarefas, entregas de sprints e marcos contratuais.</td>
+                        <td>Gráficos de Burn-down / Burn-up, Índice de Desempenho de Prazo (SPI), Marcos atingidos vs. planejados.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>2. Esforço e Custo</strong></td>
+                        <td>Consumo de orçamento, horas faturáveis, horas extras e taxa de queima financeira.</td>
+                        <td>Índice de Desempenho de Custo (CPI), Horas reais vs. orçadas, Análise de Valor Agregado (EVM).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>3. Tamanho e Estabilidade</strong></td>
+                        <td>Volumetria do produto, crescimento de escopo (scope creep) e volatilidade dos requisitos.</td>
+                        <td>Pontos de Função, Story Points entregues, Linhas de Código (SLOC), Taxa de alteração de requisitos.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>4. Qualidade do Produto</strong></td>
+                        <td>Defeitos em produtos de trabalho, confiabilidade, vulnerabilidades e usabilidade.</td>
+                        <td>Densidade de defeitos por KLOC, Falhas críticas em aberto, MTBF (tempo médio entre falhas), DRE.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>5. Desempenho do Processo</strong></td>
+                        <td>Eficiência e maturidade das atividades operacionais da equipe de engenharia.</td>
+                        <td>Lead Time, Cycle Time, Taxa de retrabalho (rework percentage), Eficiência de testes.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>6. Eficácia dos Recursos</strong></td>
+                        <td>Adequação das máquinas, licenças de software, ambiente de teste e pipeline de CI/CD.</td>
+                        <td>Disponibilidade de servidores de homologação, Tempo de execução de build/teste automatizado.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Anatomia do Indicador e Limiares -->
+              <div class="theory-box">
+                <h4>A Estrutura do Indicador e Critérios de Decisão no PSM</h4>
+                <p>
+                  No PSM, um número isolado <em>não</em> é um indicador. Um indicador é composto pela <strong>Medida</strong>, combinada a uma <strong>Linha de Base ou Plano (Target/Baseline)</strong> e por <strong>Critérios de Decisão (Limiares / Thresholds)</strong>.
+                </p>
+                <div class="theory-formula-card">
+                  <p><strong>Exemplo de Indicador PSM com Limiares de Ação:</strong></p>
+                  <p>• <em>Métrica:</em> Variação de Cronograma no Sprint.</p>
+                  <p>• <em>Faixa Verde (Normal):</em> Desvio até ± 5% do planejado ➔ Nenhuma intervenção gerencial necessária.</p>
+                  <p>• <em>Faixa Amarela (Alerta):</em> Desvio entre 6% e 15% ➔ Gerente de projeto analisa impedimentos e revisa escopo residual.</p>
+                  <p>• <em>Faixa Vermelha (Crítica):</em> Desvio &gt; 15% ➔ Disparo obrigatório de reunião de replanejamento com o cliente e realocação de recursos.</p>
+                </div>
+              </div>
+
+              <!-- Convergência ISO 15939 -->
+              <div class="theory-box">
+                <h4>Convergência com a Norma ISO/IEC 15939</h4>
+                <p>
+                  O PSM serviu como base direta para a criação da norma internacional <strong>ISO/IEC 15939 (Processo de Medição de Software e Sistemas)</strong> e IEEE 15939. O ciclo das 4 atividades e o Modelo de Informação da norma são uma padronização universal dos conceitos maduros do PSM.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ================================================================
+             PANE 4: QUADRO COMPARATIVO E SÍNTESE
+             ================================================================ -->
+        <div class="study-pane" id="pane-comp">
+          <article class="theory-section">
+            <h3><span style="color: var(--primary);">⚖️</span> 4. Quadro Comparativo: GQM vs. PSM vs. ISO/IEC 15939</h3>
+            <div class="theory-content">
+              <p>
+                Embora ambos compartilhem o paradigma de <em>medição orientada a objetivos</em>, o GQM e o PSM possuem focos metodológicos distintos e complementares:
+              </p>
+
+              <div style="overflow-x: auto;">
+                <table class="theory-table">
+                  <thead>
+                    <tr>
+                      <th>Dimensão</th>
+                      <th>GQM (Goal Question Metric)</th>
+                      <th>PSM (Practical Software Measurement)</th>
+                      <th>ISO/IEC 15939</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Autoria / Origem</strong></td>
+                      <td>Victor Basili, David Weiss (NASA / Univ. Maryland)</td>
+                      <td>John McGarry et al. (DoD / US Army)</td>
+                      <td>Comitê Técnico Conjunto ISO/IEC JTC 1 / IEEE</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Natureza Primária</strong></td>
+                      <td>Método heurístico para derivar métricas customizadas sob medida</td>
+                      <td>Framework prático de medição focado em suporte à decisão em projetos</td>
+                      <td>Norma internacional de processo de ciclo de vida de medição</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Abordagem de Seleção</strong></td>
+                      <td>Top-Down puro baseado em metas conceituais do stakeholder</td>
+                      <td>Orientado a problemas do projeto (Issue-driven) com catálogo pronto</td>
+                      <td>Baseado em Necessidades de Informação organizacionais</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Catálogo Pré-definido</strong></td>
+                      <td>Não possui catálogo fixo; toda métrica é derivada sob medida</td>
+                      <td>Possui rico catálogo padronizado das 6 Categorias Comuns</td>
+                      <td>Fornece o modelo de informação sem fixar catálogo de métricas</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Estrutura Nuclear</strong></td>
+                      <td>Goal ➔ Question ➔ Metric (Top-Down / Bottom-Up)</td>
+                      <td>Plan ➔ Perform ➔ Evaluate ➔ Commit</td>
+                      <td>Planejar ➔ Executar ➔ Avaliar ➔ Estabelecer Compromisso</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Nível Organizacional</strong></td>
+                      <td>Projetos e corporativo (via GQM+Strategies e QIP)</td>
+                      <td>Gerência de projetos de engenharia de software e sistemas</td>
+                      <td>Organização como um todo (alinhado a ISO 12207 e CMMI)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="theory-box" style="margin-top: 1.5rem;">
+                <h4>Síntese de Integração na Engenharia de Software Moderna</h4>
+                <p>
+                  As organizações maduras de software <strong>não escolhem entre GQM ou PSM</strong>, mas integram ambos:
+                </p>
+                <p>
+                  1. O <strong>GQM</strong> é utilizado para dialogar com os stakeholders, identificar as metas reais de negócio e desdobrar as perguntas certas.
+                </p>
+                <p>
+                  2. O <strong>PSM</strong> e a <strong>ISO/IEC 15939</strong> são utilizados para estruturar o processo operacional, aplicar fichas técnicas de medidas, manter o repositório histórico e fixar limiares de decisão (*Thresholds*) claros para o gerenciamento de riscos dos projetos.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
     </section>
 
     <!-- ====================================================================

@@ -1411,6 +1411,241 @@ body {
    View 5: Theory Guide ("Guia Rápido de Bolso")
    ========================================================================== */
 
+/* ==========================================================================
+   Relatório de Questões Erradas (Resultados Finais)
+   ========================================================================== */
+
+.results-mistakes-section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px dashed var(--border-subtle);
+}
+
+.mistakes-section-header {
+  margin-bottom: 1.5rem;
+}
+
+.mistakes-section-header h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.mistakes-section-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.mistakes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mistake-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  border-left: 5px solid var(--danger);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.mistake-card.is-blank {
+  border-left-color: var(--warning);
+}
+
+.mistake-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.mistake-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .mistake-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mistake-choice-box {
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mistake-choice-box.user-choice-wrong {
+  background-color: var(--danger-light);
+  border: 1.5px solid var(--danger-border);
+}
+
+.mistake-choice-box.user-choice-blank {
+  background-color: var(--warning-light);
+  border: 1.5px solid var(--warning-border);
+}
+
+.mistake-choice-box.correct-choice {
+  background-color: var(--success-light);
+  border: 1.5px solid var(--success-border);
+}
+
+.mistake-choice-label {
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mistake-choice-box.user-choice-wrong .mistake-choice-label {
+  color: var(--danger);
+}
+
+.mistake-choice-box.user-choice-blank .mistake-choice-label {
+  color: var(--warning);
+}
+
+.mistake-choice-box.correct-choice .mistake-choice-label {
+  color: var(--success);
+}
+
+.mistake-choice-text {
+  font-size: 0.925rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.mistake-choice-box.user-choice-wrong .mistake-choice-text {
+  text-decoration: line-through;
+  opacity: 0.9;
+}
+
+.mistake-why-box {
+  background-color: var(--bg-muted);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.mistake-why-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mistake-why-text {
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.mistake-why-ref {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  display: block;
+}
+
+.perfect-score-banner {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.08), rgba(59, 130, 246, 0.08));
+  border: 1.5px solid var(--success-border);
+  border-radius: var(--radius-lg);
+  margin-top: 1rem;
+}
+
+.perfect-score-banner h4 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--success);
+  margin-bottom: 0.5rem;
+}
+
+.perfect-score-banner p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   View 5: Study Academy & Deep Theory Sections
+   ========================================================================== */
+
+.study-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.study-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.study-tab-btn:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+.study-tab-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 6px var(--primary-glow);
+}
+
+.study-pane {
+  display: none;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.study-pane.active {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
 .theory-container {
   display: flex;
   flex-direction: column;
@@ -1421,14 +1656,14 @@ body {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: 2rem;
   box-shadow: var(--shadow-sm);
 }
 
 .theory-section h3 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1448,15 +1683,63 @@ body {
   background-color: var(--bg-muted);
   border-left: 4px solid var(--primary);
   border-radius: var(--radius-sm);
-  padding: 1rem 1.25rem;
-  margin: 1.25rem 0;
+  padding: 1.15rem 1.35rem;
+  margin: 1.35rem 0;
 }
 
 .theory-box h4 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.theory-flow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.flow-step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.flow-step-arrow {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.theory-formula-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+  border: 1.5px solid var(--primary-glow);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.formula-display {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  display: inline-block;
 }
 
 .theory-table {
@@ -1467,7 +1750,7 @@ body {
 }
 
 .theory-table th, .theory-table td {
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
   border: 1px solid var(--border-subtle);
   text-align: left;
 }

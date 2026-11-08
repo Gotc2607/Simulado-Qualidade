@@ -37,6 +37,7 @@ const dom = {
   navBtnPractice: document.getElementById('nav-btn-practice'),
   navBtnTheory: document.getElementById('nav-btn-theory'),
   navBtnHistory: document.getElementById('nav-btn-history'),
+  btnHeroStudy: document.getElementById('btn-hero-study'),
   btnThemeToggle: document.getElementById('btn-theme-toggle'),
   themeIcon: document.getElementById('theme-icon'),
 
@@ -97,10 +98,16 @@ const dom = {
   kpiBlank: document.getElementById('kpi-blank'),
   kpiTime: document.getElementById('kpi-time'),
   resultsTopicBreakdownContainer: document.getElementById('results-topic-breakdown-container'),
+  resultsMistakesSection: document.getElementById('results-mistakes-section'),
+  resultsMistakesContainer: document.getElementById('results-mistakes-container'),
+  mistakesSummaryText: document.getElementById('mistakes-summary-text'),
   btnGotoReview: document.getElementById('btn-goto-review'),
   btnRetryMistakes: document.getElementById('btn-retry-mistakes'),
   btnRetryAll: document.getElementById('btn-retry-all'),
   btnPrintReport: document.getElementById('btn-print-report'),
+
+  // Study View
+  studyNavTabs: document.getElementById('study-nav-tabs'),
 
   // Review View
   reviewFilterContainer: document.getElementById('review-filter-container'),
@@ -136,6 +143,7 @@ function initApp() {
   bindReviewEvents();
   bindHistoryEvents();
   bindModalEvents();
+  bindStudyTabEvents();
 }
 
 // =============================================================================
@@ -233,6 +241,12 @@ function bindNavigationEvents() {
   dom.navBtnTheory.addEventListener('click', () => {
     switchView('view-theory');
   });
+
+  if (dom.btnHeroStudy) {
+    dom.btnHeroStudy.addEventListener('click', () => {
+      switchView('view-theory');
+    });
+  }
 
   dom.navBtnHistory.addEventListener('click', () => {
     switchView('view-history');
@@ -768,12 +782,166 @@ function renderResultsDashboard(result) {
     dom.resultsTopicBreakdownContainer.appendChild(card);
   });
 
+  // Render Mistakes & Misconceptions Report directly on results screen
+  renderMistakesReport(result);
+
   // Mistakes retry button
   if (result.incorrect > 0 || result.blank > 0) {
     dom.btnRetryMistakes.style.display = 'inline-flex';
   } else {
     dom.btnRetryMistakes.style.display = 'none';
   }
+}
+
+function renderMistakesReport(result) {
+  if (!dom.resultsMistakesContainer) return;
+  dom.resultsMistakesContainer.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D', 'E'];
+
+  // Identify questions with incorrect answer or left blank
+  const mistakes = state.quizQuestions
+    .map((q, originalIdx) => {
+      const userChoice = state.userAnswers[q.id];
+      const isBlank = userChoice === undefined || userChoice === null;
+      const isCorrect = userChoice === q.correctAnswer;
+      return {
+        question: q,
+        number: originalIdx + 1,
+        userChoice,
+        isBlank,
+        isCorrect
+      };
+    })
+    .filter(item => !item.isCorrect);
+
+  if (mistakes.length === 0) {
+    if (dom.mistakesSummaryText) {
+      dom.mistakesSummaryText.textContent = 'Você demonstrou domínio perfeito de todos os conteúdos avaliados!';
+    }
+    dom.resultsMistakesContainer.innerHTML = `
+      <div class="perfect-score-banner">
+        <h4>🎉 Desempenho Impecável: 100% de Acertos!</h4>
+        <p>Você acertou todas as ${result.total} questões do simulado. Nenhuma questão foi respondida incorretamente ou deixada em branco!</p>
+      </div>
+    `;
+    return;
+  }
+
+  if (dom.mistakesSummaryText) {
+    const wrongOnly = mistakes.filter(m => !m.isBlank).length;
+    const blankOnly = mistakes.filter(m => m.isBlank).length;
+    dom.mistakesSummaryText.innerHTML = `Você teve <strong>${wrongOnly} erro${wrongOnly !== 1 ? 's' : ''}</strong> e <strong>${blankOnly} questão(ões) em branco</strong> de um total de ${result.total} questões. Analise abaixo a resposta correta de cada uma e a justificativa teórica de por que a resposta assinalada está incorreta:`;
+  }
+
+  mistakes.forEach(item => {
+    const q = item.question;
+    const card = document.createElement('div');
+    card.className = `mistake-card ${item.isBlank ? 'is-blank' : ''}`;
+
+    let topicBadgeClass = 'badge-intro';
+    if (q.topic === 'GQM') topicBadgeClass = 'badge-gqm';
+    else if (q.topic === 'PSM') topicBadgeClass = 'badge-psm';
+
+    let diffBadgeClass = 'badge-medium';
+    if (q.difficulty === 'Fácil') diffBadgeClass = 'badge-easy';
+    else if (q.difficulty === 'Difícil') diffBadgeClass = 'badge-hard';
+
+    const statusBadge = item.isBlank
+      ? `<span class="review-status-badge blank">⚠️ Não Respondida (Em Branco)</span>`
+      : `<span class="review-status-badge incorrect">✕ Resposta Incorreta</span>`;
+
+    // User Choice Box
+    let userChoiceHtml = '';
+    if (item.isBlank) {
+      userChoiceHtml = `
+        <div class="mistake-choice-box user-choice-blank">
+          <span class="mistake-choice-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            Sua Escolha: Questão em Branco
+          </span>
+          <span class="mistake-choice-text" style="font-style: italic; color: var(--text-muted);">
+            Nenhuma alternativa foi assinalada antes da finalização do simulado.
+          </span>
+        </div>
+      `;
+    } else {
+      const userLetter = letters[item.userChoice] || '?';
+      const userText = q.options[item.userChoice] || '';
+      userChoiceHtml = `
+        <div class="mistake-choice-box user-choice-wrong">
+          <span class="mistake-choice-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            Sua Resposta: Alternativa ${userLetter}
+          </span>
+          <span class="mistake-choice-text">
+            <strong>${userLetter})</strong> ${escapeHtml(userText)}
+          </span>
+        </div>
+      `;
+    }
+
+    // Correct Choice Box
+    const correctLetter = letters[q.correctAnswer];
+    const correctText = q.options[q.correctAnswer];
+    const correctChoiceHtml = `
+      <div class="mistake-choice-box correct-choice">
+        <span class="mistake-choice-label">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Gabarito Correto: Alternativa ${correctLetter}
+        </span>
+        <span class="mistake-choice-text">
+          <strong>${correctLetter})</strong> ${escapeHtml(correctText)}
+        </span>
+      </div>
+    `;
+
+    card.innerHTML = `
+      <div class="mistake-card-top">
+        <div class="question-tags">
+          <span class="badge" style="background: var(--bg-muted); color: var(--text-primary); font-weight: 800;">Questão ${item.number}</span>
+          <span class="badge ${topicBadgeClass}">${q.topic}</span>
+          <span class="badge ${diffBadgeClass}">${q.difficulty}</span>
+          <span class="question-subtopic">${escapeHtml(q.subtopic)}</span>
+        </div>
+        ${statusBadge}
+      </div>
+
+      <div class="question-text" style="font-size: 0.975rem;">
+        ${escapeHtml(q.question)}
+      </div>
+
+      <div class="mistake-comparison-grid">
+        ${userChoiceHtml}
+        ${correctChoiceHtml}
+      </div>
+
+      <div class="mistake-why-box">
+        <div class="mistake-why-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          Por que a resposta assinalada está incorreta e qual a justificativa teórica?
+        </div>
+        <p class="mistake-why-text">${escapeHtml(q.explanation)}</p>
+        <span class="mistake-why-ref">Fonte / Referência Normativa: ${escapeHtml(q.reference)}</span>
+      </div>
+    `;
+
+    dom.resultsMistakesContainer.appendChild(card);
+  });
+}
+
+function bindStudyTabEvents() {
+  const tabs = document.querySelectorAll('.study-tab-btn');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const targetPaneId = tab.dataset.tab;
+      document.querySelectorAll('.study-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === targetPaneId);
+      });
+    });
+  });
 }
 
 function bindResultsEvents() {

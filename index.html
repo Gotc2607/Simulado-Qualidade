@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulado de Qualidade de Software | Medição, GQM e PSM</title>
+  <meta name="description" content="Simulado preparatório e interativo com 30 questões comentadas sobre Medição e Análise, GQM (Goal Question Metric) e PSM (Practical Software Measurement).">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group" id="btn-logo-home" title="Ir para o Início">
+        <div class="logo-icon">Q</div>
+        <div class="logo-text">
+          <h1>Simulado Qualidade</h1>
+          <p>Medição & Análise • GQM • PSM</p>
+        </div>
+      </div>
+
+      <nav class="header-nav">
+        <button class="nav-btn active" id="nav-btn-home" title="Configurar e Iniciar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Início</span>
+        </button>
+
+        <button class="nav-btn" id="nav-btn-practice" title="Modo Treino com Resposta Imediata">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          <span>Modo Treino</span>
+        </button>
+
+        <button class="nav-btn" id="nav-btn-theory" title="Guia Resumido da Teoria">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0-5H20"></path></svg>
+          <span>Resumo Teórico</span>
+        </button>
+
+        <button class="nav-btn" id="nav-btn-history" title="Histórico de Tentativas">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Histórico</span>
+        </button>
+
+        <button class="theme-toggle-btn" id="btn-theme-toggle" title="Alternar Modo Escuro / Claro">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- ====================================================================
+         VIEW 1: HOME & SETUP
+         ==================================================================== -->
+    <section class="view-section active" id="view-home">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <span class="hero-tag">Engenharia da Qualidade de Software</span>
+        <h2>Simulado Preparatório Completo</h2>
+        <p>Avalie seus conhecimentos com 30 questões rigorosas e detalhadamente explicadas sobre Medição e Análise, a metodologia GQM de Basili e o framework PSM de McGarry.</p>
+
+        <div class="hero-quick-stats">
+          <div class="quick-stat-item">
+            <span style="color: var(--primary);">📝</span>
+            <span>30 Questões Exclusivas</span>
+          </div>
+          <div class="quick-stat-item">
+            <span style="color: var(--accent-gqm);">🎯</span>
+            <span>Gabarito Comentado</span>
+          </div>
+          <div class="quick-stat-item">
+            <span style="color: var(--accent-psm);">⏱️</span>
+            <span>Cronômetro Opcional</span>
+          </div>
+          <div class="quick-stat-item">
+            <span style="color: var(--success);">📈</span>
+            <span>Diagnóstico por Tópico</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topics Overview Cards -->
+      <h3 class="topics-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        Conteúdo Abordado no Simulado
+      </h3>
+
+      <div class="topics-grid">
+        <!-- Topic 1 -->
+        <div class="topic-card">
+          <div class="topic-card-header">
+            <h3>Introdução à Medição</h3>
+            <span class="badge badge-intro">10 Questões</span>
+          </div>
+          <p class="topic-card-body">
+            Conceitos basilares de Medida, Métrica e Indicador, escalas de medição de Fenton, Modelo de Informação ISO/IEC 15939, CMMI-DEV MA, DRE e boas práticas organizacionais.
+          </p>
+          <ul class="topic-highlights">
+            <li>Medida Direta vs. Derivada</li>
+            <li>Escalas: Nominal, Ordinal, Intervalar, Razão</li>
+            <li>Lei de Goodhart e armadilhas da medição</li>
+            <li>Modelo de Informação ISO 15939</li>
+          </ul>
+        </div>
+
+        <!-- Topic 2 -->
+        <div class="topic-card">
+          <div class="topic-card-header">
+            <h3>GQM (Basili)</h3>
+            <span class="badge badge-gqm">10 Questões</span>
+          </div>
+          <p class="topic-card-body">
+            A abordagem Goal Question Metric: Níveis Conceitual, Operacional e Quantitativo, fluxo Top-Down/Bottom-Up, Template dos 5 elementos, Folhas de Abstração e QIP.
+          </p>
+          <ul class="topic-highlights">
+            <li>Estrutura em 3 Níveis (Goal-Question-Metric)</li>
+            <li>Template: Objeto, Propósito, Foco, Ponto de Vista, Contexto</li>
+            <li>Top-Down (Definição) e Bottom-Up (Interpretação)</li>
+            <li>GQM+Strategies e QIP / Experience Factory</li>
+          </ul>
+        </div>
+
+        <!-- Topic 3 -->
+        <div class="topic-card">
+          <div class="topic-card-header">
+            <h3>PSM (McGarry / DoD)</h3>
+            <span class="badge badge-psm">10 Questões</span>
+          </div>
+          <p class="topic-card-body">
+            Practical Software Measurement: Princípios norteadores, as 4 atividades do processo de medição, Categorias Comuns de Medição, Especificação de Indicadores e Limiares de Decisão.
+          </p>
+          <ul class="topic-highlights">
+            <li>4 Atividades: Plan, Perform, Evaluate, Commit</li>
+            <li>Categorias Comuns: Tamanho, Cronograma, Custo, Qualidade</li>
+            <li>Indicadores, Linhas de Base e Critérios de Decisão</li>
+            <li>Sinergias e convergência com ISO/IEC 15939</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Config & Launch Panel -->
+      <div class="config-panel">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Configurações da Tentativa
+        </h3>
+
+        <div class="config-grid">
+          <!-- Scope Selection -->
+          <div class="config-group">
+            <label for="config-topic">Escopo do Conteúdo</label>
+            <select id="config-topic" class="config-select">
+              <option value="all">Todos os Tópicos (30 Questões)</option>
+              <option value="Introdução à Medição e Análise">Apenas Introdução à Medição (10 Questões)</option>
+              <option value="GQM">Apenas GQM - Goal Question Metric (10 Questões)</option>
+              <option value="PSM">Apenas PSM - Practical Software Measurement (10 Questões)</option>
+            </select>
+          </div>
+
+          <!-- Timer Selection -->
+          <div class="config-group">
+            <label for="config-time">Tempo Limite</label>
+            <select id="config-time" class="config-select">
+              <option value="0">Sem Limite de Tempo</option>
+              <option value="30">30 Minutos (1 min/questão)</option>
+              <option value="45" selected>45 Minutos (1,5 min/questão - Recomendado)</option>
+              <option value="60">60 Minutos (2 min/questão)</option>
+            </select>
+          </div>
+
+          <!-- Order Shuffle -->
+          <div class="config-group">
+            <label for="config-shuffle">Ordem das Questões</label>
+            <select id="config-shuffle" class="config-select">
+              <option value="no">Sequencial Pedagógica (1 a 30 por tópico)</option>
+              <option value="yes">Aleatória (Embaralhar questões)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Mode Radio Cards -->
+        <label style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; display: block;">Modo de Realização</label>
+        <div class="config-radio-cards">
+          <label class="mode-radio-card selected" id="card-mode-exam">
+            <input type="radio" name="sim-mode" value="exam" checked>
+            <div class="mode-radio-title">Modo Simulado Real</div>
+            <div class="mode-radio-desc">Ideal para teste final: sem gabarito imediato durante a prova. O relatório e explicações completas são exibidos ao finalizar.</div>
+          </label>
+
+          <label class="mode-radio-card" id="card-mode-study">
+            <input type="radio" name="sim-mode" value="study">
+            <div class="mode-radio-title">Modo Estudo / Treino</div>
+            <div class="mode-radio-desc">Ideal para aprendizado: exibe o gabarito e a justificativa teórica imediatamente após marcar cada questão.</div>
+          </label>
+        </div>
+
+        <div class="start-btn-container">
+          <button class="btn-primary-large" id="btn-start-quiz">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Iniciar Simulado
+          </button>
+          <span style="font-size: 0.775rem; color: var(--text-muted);">Suas tentativas são salvas no histórico local do seu navegador.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 2: QUIZ ACTIVE
+         ==================================================================== -->
+    <section class="view-section" id="view-quiz">
+      <!-- Quiz Top Bar -->
+      <div class="quiz-top-bar">
+        <div class="quiz-progress-info">
+          <div class="quiz-progress-header">
+            <span id="quiz-question-counter">Questão 1 de 30</span>
+            <span id="quiz-answered-count">0 respondidas</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 3.33%;"></div>
+          </div>
+        </div>
+
+        <div class="quiz-meta-actions">
+          <!-- Timer badge -->
+          <div class="timer-badge" id="quiz-timer-container" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span id="quiz-timer-text">45:00</span>
+          </div>
+
+          <!-- Flag for review -->
+          <button class="btn-flag-review" id="btn-flag-question" title="Marcar esta questão para revisar antes de finalizar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span id="btn-flag-text">Revisar</span>
+          </button>
+
+          <!-- Toggle grid -->
+          <button class="btn-grid-toggle" id="btn-toggle-palette" title="Mostrar/Ocultar Grade de Questões">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Grade</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Main Layout (Card + Sidebar) -->
+      <div class="quiz-main-layout with-sidebar" id="quiz-layout-wrapper">
+        <!-- Question Area -->
+        <div class="quiz-content-area">
+          <div class="question-card">
+            <!-- Header with Topic & Difficulty -->
+            <div class="question-header">
+              <div class="question-tags">
+                <span class="badge" id="card-topic-badge">GQM</span>
+                <span class="badge badge-medium" id="card-diff-badge">Médio</span>
+                <span class="question-subtopic" id="card-subtopic">Template de Metas</span>
+              </div>
+            </div>
+
+            <!-- Question Text -->
+            <div class="question-text" id="card-question-text">
+              Texto da questão carregando...
+            </div>
+
+            <!-- Options List -->
+            <div class="options-list" id="card-options-container">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Instant Feedback (Study mode only) -->
+            <div class="study-feedback-box" id="study-feedback-container" style="display: none;">
+              <div class="study-feedback-title" id="study-feedback-title">
+                Resposta Correta!
+              </div>
+              <div class="study-feedback-text" id="study-feedback-text">
+                Justificativa teórica detalhada...
+              </div>
+              <div class="study-feedback-ref" id="study-feedback-ref">
+                Referência: Basili et al. (1994)
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Controls -->
+          <div class="quiz-nav-bar">
+            <div class="nav-actions-left">
+              <button class="btn-secondary" id="btn-prev-question" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+                Anterior
+              </button>
+              <button class="btn-secondary" id="btn-clear-answer" title="Desmarcar resposta desta questão">
+                Limpar
+              </button>
+            </div>
+
+            <div class="nav-actions-right">
+              <button class="btn-primary" id="btn-next-question">
+                Próxima
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+              </button>
+              <button class="btn-finish-quiz" id="btn-finish-quiz">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Finalizar Simulado
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Question Palette Grid -->
+        <aside class="quiz-sidebar" id="quiz-sidebar-panel">
+          <div class="sidebar-header">
+            <span class="sidebar-title">Navegação Rápida</span>
+          </div>
+
+          <div class="question-palette-grid" id="question-palette-container">
+            <!-- 30 buttons rendered here -->
+          </div>
+
+          <div class="palette-legend">
+            <div class="legend-item">
+              <div class="legend-dot answered"></div>
+              <span>Respondida</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot unanswered"></div>
+              <span>Em branco</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot current"></div>
+              <span>Atual</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot flagged"></div>
+              <span>Para revisar</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 3: RESULTS DASHBOARD
+         ==================================================================== -->
+    <section class="view-section" id="view-results">
+      <div class="results-hero-card">
+        <!-- Circular Gauge -->
+        <div class="results-score-circle" id="results-score-circle" style="--score-pct: 0; --score-color: var(--primary);">
+          <div class="results-score-text">
+            <span class="results-score-value" id="results-score-pct">0%</span>
+            <span class="results-score-label" id="results-score-fraction">0 / 30</span>
+          </div>
+        </div>
+
+        <h2 class="results-hero-title" id="results-feedback-title">Simulado Concluído!</h2>
+        <p class="results-hero-subtitle" id="results-feedback-message">
+          Confira abaixo o seu diagnóstico detalhado por tópico e revise as questões com fundamentação técnica.
+        </p>
+
+        <!-- KPI Cards Grid -->
+        <div class="results-kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-val correct" id="kpi-correct">0</span>
+            <span class="kpi-label">Acertos</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-val incorrect" id="kpi-incorrect">0</span>
+            <span class="kpi-label">Erros</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-val blank" id="kpi-blank">0</span>
+            <span class="kpi-label">Em Branco</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-val time" id="kpi-time">--:--</span>
+            <span class="kpi-label">Tempo Total</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breakdown by Topic Section -->
+      <div class="results-topic-section">
+        <h3>Desempenho por Tópico</h3>
+        <div id="results-topic-breakdown-container">
+          <!-- Dynamically generated topic breakdown cards -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="results-actions-grid">
+        <button class="btn-primary" id="btn-goto-review">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          Revisar Gabarito Completo & Explicações
+        </button>
+
+        <button class="btn-secondary" id="btn-retry-mistakes" style="display: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+          Refazer Apenas Questões Erradas
+        </button>
+
+        <button class="btn-secondary" id="btn-retry-all">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Novo Simulado
+        </button>
+
+        <button class="btn-secondary" id="btn-print-report">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Imprimir Relatório
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 4: REVIEW & DETAILED EXPLANATIONS
+         ==================================================================== -->
+    <section class="view-section" id="view-review">
+      <div class="review-header-bar">
+        <div>
+          <h2>Gabarito Comentado</h2>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Confira a justificativa teórica de cada alternativa e as referências normativas.</p>
+        </div>
+
+        <div class="review-filter-group" id="review-filter-container">
+          <button class="filter-btn active" data-filter="all">Todas (<span id="count-filter-all">30</span>)</button>
+          <button class="filter-btn" data-filter="incorrect">Erradas (<span id="count-filter-incorrect">0</span>)</button>
+          <button class="filter-btn" data-filter="correct">Acertos (<span id="count-filter-correct">0</span>)</button>
+          <button class="filter-btn" data-filter="blank">Em Branco (<span id="count-filter-blank">0</span>)</button>
+          <button class="filter-btn" data-filter="flagged">Marcadas (<span id="count-filter-flagged">0</span>)</button>
+        </div>
+      </div>
+
+      <div class="review-cards-list" id="review-cards-container">
+        <!-- Dynamically rendered review cards -->
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="btn-secondary" id="btn-review-back-results">
+          ← Voltar para o Dashboard de Resultados
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 5: QUICK THEORY GUIDE ("Guia Rápido de Bolso")
+         ==================================================================== -->
+    <section class="view-section" id="view-theory">
+      <div class="theory-container">
+        <!-- Theory 1: Introdução à Medição -->
+        <article class="theory-section">
+          <h3>
+            <span style="color: var(--accent-intro);">📘</span>
+            1. Introdução à Medição e Análise de Software
+          </h3>
+          <div class="theory-content">
+            <p>A medição em software é a atribuição numérica ou simbólica de valores a atributos de entidades do mundo real do desenvolvimento (processos, produtos ou recursos) para caracterizá-los objetivamente (Fenton & Pfleeger).</p>
+
+            <div class="theory-box">
+              <h4>Conceitos Fundamentais (IEEE & ISO/IEC 15939):</h4>
+              <p><strong>• Medida (Measure):</strong> Número atribuído diretamente a um atributo mensurável (ex: 1.200 linhas de código, 8 horas de teste).</p>
+              <p><strong>• Métrica (Metric):</strong> Medida quantitativa do grau em que um sistema/processo possui um atributo, frequentemente combinando duas medidas (ex: Densidade de Defeitos = Defeitos / KLOC).</p>
+              <p><strong>• Indicador (Indicator):</strong> Métrica ou combinação de métricas associada a critérios de decisão e limiares (thresholds), gerando subsídios para a ação e tomada de decisão gerencial.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Escalas de Medição (Teoria da Medição):</h4>
+              <p><strong>• Nominal:</strong> Classificação em categorias sem ordem (ex: tipo de erro: sintaxe, lógica, concorrência). Operações válidas: igualdade, moda.</p>
+              <p><strong>• Ordinal:</strong> Categorias com ordenação inerente (ex: severidade: baixa, média, alta, crítica). Operações: ordenação, mediana.</p>
+              <p><strong>• Intervalar:</strong> Escala numérica com intervalos regulares, mas sem zero absoluto (ex: datas no calendário, temperatura Celsius). Operações: média, desvio-padrão.</p>
+              <p><strong>• Razão (Ratio):</strong> Escala com zero absoluto não arbitrário (ex: tempo em horas, LOC, custo em reais). Permite todas as operações matemáticas e estatísticas (razões e proporções).</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Modelo de Informação da Medição (ISO/IEC 15939):</h4>
+              <p><strong>Necessidade de Informação → Objeto & Atributo → Medida de Base → Medida Derivada → Indicador (com critérios de decisão) → Produto de Informação.</strong></p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Lei de Goodhart & Armadilhas:</h4>
+              <p><em>"Quando uma medida se torna uma meta de desempenho ou punição, ela deixa de ser uma boa medida."</em> Métricas devem avaliar processos e produtos, nunca servir como ferramenta coercitiva ou de recompensa individual isolada sem métricas de contrapeso.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Theory 2: GQM -->
+        <article class="theory-section">
+          <h3>
+            <span style="color: var(--accent-gqm);">🎯</span>
+            2. GQM - Goal Question Metric (Victor Basili)
+          </h3>
+          <div class="theory-content">
+            <p>Criado na NASA/SEL por Victor Basili, o GQM é uma abordagem orientada a objetivos (Goal-Driven) que estabelece que a medição deve sempre partir de um objetivo claro para ser significativa.</p>
+
+            <div class="theory-box">
+              <h4>Os 3 Níveis da Hierarquia GQM:</h4>
+              <p><strong>1. Nível Conceitual (GOAL / META):</strong> O objetivo que se pretende atingir ou analisar com a medição.</p>
+              <p><strong>2. Nível Operacional (QUESTION / QUESTÃO):</strong> Conjunto de perguntas que caracterizam o objeto e definem se a meta está sendo cumprida.</p>
+              <p><strong>3. Nível Quantitativo (METRIC / MÉTRICA):</strong> Conjunto de dados e medidas quantitativas (objetivas ou subjetivas) que respondem numericamente a cada questão.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>A Via de Mão Dupla do GQM:</h4>
+              <p><strong>• Top-Down (Especificação/Planejamento):</strong> Meta → Questões → Métricas.</p>
+              <p><strong>• Bottom-Up (Interpretação/Análise):</strong> Métricas coletadas respondem às Questões, que por sua vez permitem avaliar e interpretar a Meta.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>O Template Formal de Metas GQM:</h4>
+              <p>O GQM define metas através de 5 dimensões mandatórias:</p>
+              <p>• <strong>Objeto:</strong> O processo, produto ou recurso a ser analisado (ex: o processo de code review).</p>
+              <p>• <strong>Propósito:</strong> O intuito (caracterizar, avaliar, prever, melhorar, controlar).</p>
+              <p>• <strong>Foco de Qualidade:</strong> O atributo de qualidade visado (ex: eficácia na remoção de defeitos).</p>
+              <p>• <strong>Ponto de Vista:</strong> Quem é o stakeholder interessado (desenvolvedor, gerente, cliente, QA).</p>
+              <p>• <strong>Contexto:</strong> O ambiente de aplicação (ex: projetos da equipe mobile na empresa X).</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Folhas de Abstração (Abstraction Sheets):</h4>
+              <p>Instrumento de workshops do GQM dividido em 4 quadrantes: Foco de Qualidade, Fatores de Variação, Hipóteses de Linha de Base (Baseline), e Hipóteses de Impacto.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>GQM+Strategies & QIP:</h4>
+              <p>• <strong>GQM+Strategies:</strong> Alinha objetivos de negócio de alto nível da diretoria executiva às metas operacionais de engenharia de software.</p>
+              <p>• <strong>QIP (Quality Improvement Paradigm):</strong> Ciclo de 6 etapas de melhoria contínua onde o GQM é a ferramenta nuclear nos passos de Definição de Metas (Passo 2) e Análise de Dados (Passo 5).</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Theory 3: PSM -->
+        <article class="theory-section">
+          <h3>
+            <span style="color: var(--accent-psm);">⚙️</span>
+            3. PSM - Practical Software Measurement (John McGarry / DoD)
+          </h3>
+          <div class="theory-content">
+            <p>O PSM foi patrocinado pelo Departamento de Defesa dos EUA (DoD) e Exército Americano para fornecer a gerentes de projeto informações objetivas e baseadas em fatos para tomada de decisão e controle de riscos em projetos de sistemas complexos.</p>
+
+            <div class="theory-box">
+              <h4>As 4 Atividades do Ciclo do PSM:</h4>
+              <p><strong>1. Estabelecer e Sustentar o Compromisso (Establish & Sustain Commitment):</strong> Obter patrocínio gerencial, recursos, orçamento e treinamento.</p>
+              <p><strong>2. Planejar a Medição (Plan Measurement):</strong> Identificar questões e riscos de medição do projeto, selecionar medidas, especificar fichas técnicas e procedimentos de coleta.</p>
+              <p><strong>3. Executar a Medição (Perform Measurement):</strong> Coletar dados, analisar indicadores, comparar contra limiares e gerar produtos de informação para os tomadores de decisão.</p>
+              <p><strong>4. Avaliar a Medição (Evaluate Measurement):</strong> Avaliar a eficácia do próprio processo de medição (meta-medição/PDCA) e atualizar o repositório de experiências.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Categorias Comuns de Medição do PSM:</h4>
+              <p>O PSM disponibiliza um catálogo consolidado de categorias e indicadores comprovados:</p>
+              <p>• <strong>Cronograma e Progresso (Schedule & Progress):</strong> Marcos, Sprints, datas de entrega, burn-down.</p>
+              <p>• <strong>Esforço e Custo (Effort & Cost):</strong> Horas gastas, custo real vs. orçado (EVM/CPI).</p>
+              <p>• <strong>Tamanho e Estabilidade (Size & Stability):</strong> LOC, Pontos de Função, Story Points, taxa de alteração de escopo.</p>
+              <p>• <strong>Qualidade do Produto (Product Quality):</strong> Densidade de defeitos, falhas críticas, usabilidade.</p>
+              <p>• <strong>Desempenho do Processo (Process Performance):</strong> DRE, lead time, tempo de ciclo.</p>
+              <p>• <strong>Eficácia dos Recursos (Resource Effectiveness):</strong> Disponibilidade do ambiente de testes, capacidade das ferramentas.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>O Conceito de Indicador e Critérios de Decisão no PSM:</h4>
+              <p>Para o PSM, um indicador requer obrigatoriamente três partes: a <strong>medida real</strong>, uma <strong>linha de base/meta de planejamento</strong> e <strong>Critérios de Decisão (limiares/thresholds)</strong> que instruam qual decisão ou ação corretiva deve ser disparada quando ocorrer um desvio.</p>
+            </div>
+
+            <div class="theory-box">
+              <h4>Convergência com ISO/IEC 15939:</h4>
+              <p>A norma internacional ISO/IEC 15939 adotou diretamente o modelo de processo (Plan, Perform, Evaluate, Commit) e o Modelo de Informação estabelecidos pelo PSM.</p>
+            </div>
+
+            <!-- Comparison Table -->
+            <h4 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-primary);">Quadro Comparativo: GQM vs. PSM</h4>
+            <div style="overflow-x: auto;">
+              <table class="theory-table">
+                <thead>
+                  <tr>
+                    <th>Característica</th>
+                    <th>GQM (Goal Question Metric)</th>
+                    <th>PSM (Practical Software Measurement)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Origem</strong></td>
+                    <td>NASA / Software Engineering Lab (Victor Basili)</td>
+                    <td>DoD / US Army (John McGarry)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Foco Primário</strong></td>
+                    <td>Derivação lógica de métricas sob medida a partir de metas conceituais e questões</td>
+                    <td>Processo prático de medição e catálogo estruturado de indicadores para suporte à decisão gerencial</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Abordagem de Seleção</strong></td>
+                    <td>Heurística customizada (Template de Metas + Questões)</td>
+                    <td>Orientado a problemas do projeto (Issue-driven) com catálogo de Categorias Comuns pré-existente</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Estrutura Nuclear</strong></td>
+                    <td>Meta → Questão → Métrica (Top-Down / Bottom-Up)</td>
+                    <td>Plan → Perform → Evaluate → Commit</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Normatização</strong></td>
+                    <td>Fundamenta o GQM+Strategies e o QIP</td>
+                    <td>Originou diretamente a norma ISO/IEC 15939 / IEEE 15939</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Relação</strong></td>
+                    <td colspan="2" style="text-align: center; font-weight: 600; background: var(--bg-surface);">
+                      Complementares: O GQM define "o que e por que medir" de forma personalizada, enquanto o PSM estrutura "como gerenciar o processo de medição e apoiar decisões em projetos".
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW 6: HISTORY
+         ==================================================================== -->
+    <section class="view-section" id="view-history">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2>Histórico de Desempenho</h2>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Acompanhe sua evolução ao longo das tentativas realizadas neste navegador.</p>
+        </div>
+
+        <button class="btn-secondary" id="btn-clear-history">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          Limpar Histórico
+        </button>
+      </div>
+
+      <div id="history-list-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Confirm Finish Modal Dialog -->
+  <div class="modal-backdrop" id="modal-confirm-finish">
+    <div class="modal-card">
+      <div class="modal-header">Finalizar o Simulado?</div>
+      <div class="modal-body" id="modal-confirm-body">
+        Você respondeu X de 30 questões. Deseja realmente encerrar a tentativa e visualizar a pontuação e gabarito agora?
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-modal-cancel">Continuar Simulado</button>
+        <button class="btn-primary" id="btn-modal-confirm">Confirmar e Finalizar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>Simulado de Qualidade de Software • Medição e Análise (ISO/IEC 15939) • GQM (Basili) • PSM (McGarry / DoD)</p>
+    <p style="margin-top: 0.25rem; font-size: 0.75rem;">Desenvolvido para estudo acadêmico e preparação profissional.</p>
+  </footer>
+
+  <!-- Application Logic Modules -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

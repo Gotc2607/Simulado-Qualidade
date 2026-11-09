@@ -68,6 +68,8 @@ const dom = {
   btnTogglePalette: document.getElementById('btn-toggle-palette'),
   quizLayoutWrapper: document.getElementById('quiz-layout-wrapper'),
   quizSidebarPanel: document.getElementById('quiz-sidebar-panel'),
+  sidebarBackdrop: document.getElementById('sidebar-backdrop'),
+  btnCloseSidebar: document.getElementById('btn-close-sidebar'),
   questionPaletteContainer: document.getElementById('question-palette-container'),
 
   // Question Card
@@ -175,6 +177,7 @@ function applyTheme(theme) {
 
 function switchView(viewId) {
   state.activeView = viewId;
+  closeMobilePalette();
 
   // Hide all view sections
   document.querySelectorAll('.view-section').forEach(section => {
@@ -546,6 +549,18 @@ function toggleFlagCurrentQuestion() {
 // Question Palette Grid (Sidebar)
 // =============================================================================
 
+function openMobilePalette() {
+  if (dom.quizSidebarPanel) dom.quizSidebarPanel.classList.add('open-mobile');
+  if (dom.sidebarBackdrop) dom.sidebarBackdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobilePalette() {
+  if (dom.quizSidebarPanel) dom.quizSidebarPanel.classList.remove('open-mobile');
+  if (dom.sidebarBackdrop) dom.sidebarBackdrop.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 function renderQuestionPalette() {
   dom.questionPaletteContainer.innerHTML = '';
   state.quizQuestions.forEach((q, idx) => {
@@ -559,6 +574,9 @@ function renderQuestionPalette() {
     btn.addEventListener('click', () => {
       state.currentIndex = idx;
       renderCurrentQuestion();
+      if (window.innerWidth <= 768) {
+        closeMobilePalette();
+      }
     });
 
     dom.questionPaletteContainer.appendChild(btn);
@@ -604,12 +622,31 @@ function bindQuizEvents() {
   dom.btnFlagQuestion.addEventListener('click', toggleFlagCurrentQuestion);
 
   dom.btnTogglePalette.addEventListener('click', () => {
-    dom.quizLayoutWrapper.classList.toggle('with-sidebar');
-    const isHidden = !dom.quizLayoutWrapper.classList.contains('with-sidebar');
-    dom.quizSidebarPanel.style.display = isHidden ? 'none' : 'flex';
+    if (window.innerWidth <= 768) {
+      if (dom.quizSidebarPanel.classList.contains('open-mobile')) {
+        closeMobilePalette();
+      } else {
+        openMobilePalette();
+      }
+    } else {
+      dom.quizLayoutWrapper.classList.toggle('with-sidebar');
+      const isHidden = !dom.quizLayoutWrapper.classList.contains('with-sidebar');
+      dom.quizSidebarPanel.style.display = isHidden ? 'none' : 'flex';
+    }
   });
 
-  dom.btnFinishQuiz.addEventListener('click', promptFinishQuiz);
+  if (dom.btnCloseSidebar) {
+    dom.btnCloseSidebar.addEventListener('click', closeMobilePalette);
+  }
+
+  if (dom.sidebarBackdrop) {
+    dom.sidebarBackdrop.addEventListener('click', closeMobilePalette);
+  }
+
+  dom.btnFinishQuiz.addEventListener('click', () => {
+    closeMobilePalette();
+    promptFinishQuiz();
+  });
 }
 
 function promptFinishQuiz() {
